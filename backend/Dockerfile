@@ -8,5 +8,4 @@ COPY . .
 RUN bunx prisma generate
 
 EXPOSE 10000
-
 CMD ["bun", "run", "start"]
