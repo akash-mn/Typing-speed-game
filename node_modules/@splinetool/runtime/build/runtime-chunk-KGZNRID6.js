@@ -1,0 +1,1 @@
+import{h as e}from"./runtime-chunk-4KZXQGUQ.js";var t=null;function n(e){t=e}function r(){return t}function a(t){let n=t?.tracks.filter(e=>"vector"===e.ValueTypeName||"quaternion"===e.ValueTypeName).map(e=>e.times.length);if(n?.length){let t=e(n);return t&&t>2?t:2}return 2}export{a,n as b,r as c};

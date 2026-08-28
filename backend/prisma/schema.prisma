@@ -1,0 +1,50 @@
+// Prisma schema for the Typing Speed Game
+// Run `bun run prisma:migrate` after setting DATABASE_URL to create/update tables.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  username     String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+
+  // Server-side "best score" (lowest total completion time, in milliseconds).
+  // Mirrors the locally-persisted best score on the client so the leaderboard
+  // and success/failure comparison stay authoritative even across devices.
+  bestTimeMs Int?
+
+  gameResults GameResult[]
+
+  @@map("users")
+}
+
+model GameResult {
+  id         String   @id @default(uuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Total time to type all 20 characters, including the 0.5s penalty per
+  // mistake, stored in milliseconds for precision.
+  timeMs     Int
+
+  // Number of incorrect key presses during the run.
+  errorCount Int
+
+  // Whether this run beat the user's previous best at the time it was submitted.
+  isNewBest  Boolean  @default(false)
+
+  createdAt  DateTime @default(now())
+
+  @@index([timeMs])
+  @@index([userId])
+  @@map("game_results")
+}

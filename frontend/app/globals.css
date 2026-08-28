@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #111111;
+  --color-surface: #ffffff;
+  --color-surface-2: #f0eee8;
+  --color-line: #d8d5ce;
+  --color-brass: #f2a72e;
+  --color-brass-dim: #a86c12;
+  --color-teal: #167c72;
+  --color-rose: #c94b46;
+  --color-paper: #f7f6f2;
+  --color-muted: #686761;
+
+  --font-mono-display: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --animate-shake: shake 0.3s ease-in-out;
+  --animate-press: press 0.12s ease-out;
+  --animate-blink: blink 1.1s steps(1) infinite;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+@keyframes press {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes medal-float {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-4px) rotate(5deg); }
+}
+
+.animate-medal-gold,
+.animate-medal-silver,
+.animate-medal-bronze {
+  animation: medal-float 2.4s ease-in-out infinite;
+}
+
+.animate-medal-silver {
+  animation-delay: 0.2s;
+}
+
+.animate-medal-bronze {
+  animation-delay: 0.4s;
+}
+
+html, body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+::selection {
+  background: var(--color-brass);
+  color: var(--color-ink);
+}
+
+body {
+  background-image: radial-gradient(circle at 80% 10%, rgba(242, 167, 46, 0.13), transparent 25rem);
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Keep a visible focus ring everywhere for keyboard users. */
+:focus-visible {
+  outline: 2px solid var(--color-brass);
+  outline-offset: 2px;
+}
+
+.font-display {
+  font-family: var(--font-mono-display);
+}
+
+.font-body {
+  font-family: var(--font-sans);
+}

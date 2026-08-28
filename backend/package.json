@@ -1,0 +1,33 @@
+{
+  "name": "typing-speed-game-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "start": "bun run src/index.ts",
+    "build": "bun build src/index.ts --outdir dist --target bun",
+    "prisma:generate": "bunx prisma generate",
+    "prisma:migrate": "bunx prisma migrate dev",
+    "prisma:migrate:deploy": "bunx prisma migrate deploy",
+    "prisma:studio": "bunx prisma studio",
+    "db:seed": "bun run prisma/seed.ts",
+    "test": "bun test",
+    "test:watch": "bun test --watch"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.2.1",
+    "graphql": "^16.9.0",
+    "graphql-yoga": "^5.10.4",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.7",
+    "prisma": "^6.2.1",
+    "typescript": "^5.7.2",
+    "bun-types": "latest"
+  }
+}
