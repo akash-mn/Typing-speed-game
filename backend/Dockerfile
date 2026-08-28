@@ -7,6 +7,6 @@ RUN bun install --frozen-lockfile || bun install
 COPY . .
 RUN bunx prisma generate
 
-EXPOSE 4000
+EXPOSE 10000
 
 CMD ["bun", "run", "start"]
