@@ -9,4 +9,4 @@ RUN bunx prisma generate
 
 EXPOSE 4000
 
-CMD ["bun", "run", "src/index.ts"]
+CMD ["bun", "run", "start"]
